@@ -1,0 +1,94 @@
+{
+  "compras": [
+    {
+      "id": 1,
+      "evento": "Carregamento de vale pedágio",
+      "data": "2025-02-20",
+      "hora": "12:52:10",
+      "idAntt": 54872,
+      "embarcador": {
+        "id": 1,
+        "nome": "Unilever Brasil LTDA"
+      },
+      "rota": "FIXA",
+      "origem": "SP - São Jose dos Campos",
+      "destino": "SC - Santa Catarina",
+      "paradas": [
+        {
+          "descricao": "SC - Santa Catarina"
+        },
+        {
+          "descricao": "SC - Santa Catarina"
+        },
+        {
+          "descricao": "SC - Santa Catarina"
+        }
+      ],
+      "veiculo": {
+        "placa": "EKJ0A58",
+        "eixos": 5
+      },
+      "valores": {
+        "carregado": 350,
+        "utilizado": 300,
+        "debitoVpo": 50
+      },
+      "transacoes": [
+        {
+          "id": 1,
+          "data": "2025-02-20",
+          "hora": "12:52:10",
+          "concessionaria": {
+            "id": 1,
+            "nome": "Filial Camacari"
+          },
+          "rota": "FIXA",
+          "praca": "Mata de São João 044+100 - Norte",
+          "veiculo": {
+            "placa": "EKJ0A58",
+            "eixos": 5
+          },
+          "valor": 30,
+          "descricao": "Passagem debitada valor do vale pedágio",
+          "valido": true
+        },
+        {
+          "id": 1,
+          "data": "2025-02-20",
+          "hora": "12:52:10",
+          "concessionaria": {
+            "id": 1,
+            "nome": "Filial Camacari"
+          },
+          "rota": "FIXA",
+          "praca": "Mata de São João 044+100 - Norte",
+          "veiculo": {
+            "placa": "EKJ0A58",
+            "eixos": 5
+          },
+          "valor": 30,
+          "descricao": "Passagem debitada valor do vale pedágio",
+          "valido": false
+        },
+        {
+          "id": 1,
+          "data": "2025-02-20",
+          "hora": "12:52:10",
+          "concessionaria": {
+            "id": 1,
+            "nome": "Filial Camacari"
+          },
+          "rota": "FIXA",
+          "praca": "Mata de São João 044+100 - Norte",
+          "veiculo": {
+            "placa": "EKJ0A58",
+            "eixos": 5
+          },
+          "valor": 30,
+          "descricao": "Passagem debitada valor do vale pedágio",
+          "valido": true
+        }
+      ]
+    }
+  ]
+}
