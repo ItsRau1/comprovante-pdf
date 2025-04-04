@@ -5,7 +5,7 @@ import lombok.Getter;
 @Getter
 public enum ColumnsTypePDF {
 
-    FULL_WIDTH("fullWidth"), HEADER_INFO("headerInfo"), SUMARIO_COMPRA("sumarioCompra");
+    HEADER("header"), BODY("body"), FOOTER("footer");
 
     public final String value;
 

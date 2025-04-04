@@ -7,24 +7,24 @@ public class ColumnFactory {
 
     public static float[] generate (ColumnsTypePDF column) {
         return switch (column) {
-            case FULL_WIDTH:
-                yield generateFullWidth();
-            case HEADER_INFO:
-                yield generateHeaderInfo();
-            case SUMARIO_COMPRA:
-                yield generateSumarioCompra();
+            case HEADER:
+                yield generateHeader();
+            case BODY:
+                yield generateBody();
+            case FOOTER:
+                yield generateFooter();
         };
     }
 
-    static float[] generateFullWidth () {
-        return new float[] { ColumnsSizePDF._770.getValue() };
+    static float[] generateHeader () {
+        return new float[] { 421.0f, 421.0f };
     }
 
-    static float[] generateHeaderInfo () {
-        return new float[] { ColumnsSizePDF._35.getValue(), ColumnsSizePDF._1.getValue(), ColumnsSizePDF._120.getValue(), ColumnsSizePDF._614.getValue() };
+    static float[] generateBody () {
+        return new float[] { 420.5f, 1f, 420.5f };
     }
 
-    static float[] generateSumarioCompra() {
+    static float[] generateFooter() {
         return new float[] { ColumnsSizePDF._32.getValue(), ColumnsSizePDF._738.getValue() };
     }
 

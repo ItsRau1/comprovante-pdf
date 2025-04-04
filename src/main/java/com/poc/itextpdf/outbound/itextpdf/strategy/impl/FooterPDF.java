@@ -5,6 +5,7 @@ import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Table;
 import com.poc.itextpdf.core.domains.dto.CompraCommand;
+import com.poc.itextpdf.core.domains.dto.GerarComprovanteCommand;
 import com.poc.itextpdf.core.domains.dto.GerarPDFCommand;
 import com.poc.itextpdf.outbound.itextpdf.factory.ColumnFactory;
 import com.poc.itextpdf.outbound.itextpdf.property.ColumnsTypePDF;
@@ -18,14 +19,8 @@ import java.util.Optional;
 @Component
 public class FooterPDF implements ImpressorPDFStrategy {
     @Override
-    public void imprimir(Document document, GerarPDFCommand data) {
-        Table table = new Table(ColumnFactory.generate(ColumnsTypePDF.FULL_WIDTH));
-
-        CompraCommand compra = Optional.ofNullable(data.getCompras().get(0)).orElseThrow(RuntimeException::new);
-
-        compra.getTransacoes().forEach(transacao -> {
-            table.addCell(new Cell().add("Transação Compra").setMargin(5f).setBorder(Border.NO_BORDER));
-        });
+    public void imprimir(Document document, GerarComprovanteCommand data) {
+        Table table = new Table(ColumnFactory.generate(ColumnsTypePDF.FOOTER));
 
         document.add(table);
     }

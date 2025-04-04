@@ -1,7 +1,9 @@
 package com.poc.itextpdf.core.domains.entity;
 
+import com.poc.itextpdf.core.domains.dto.GerarComprovanteCommand;
 import com.poc.itextpdf.core.domains.dto.GerarPDFCommand;
 import com.poc.itextpdf.core.domains.exception.entity.FormatacaoEntidadeException;
+import com.poc.itextpdf.core.domains.gateway.RelatorioGateway;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 
@@ -27,5 +29,7 @@ public class RelatorioPDF extends ByteArrayOutputStream {
             throw new FormatacaoEntidadeException("RelatorioPDF");
         }
     }
+
+    public RelatorioPDF(GerarComprovanteCommand command) {}
 
 }

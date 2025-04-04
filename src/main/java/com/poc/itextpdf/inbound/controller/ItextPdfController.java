@@ -1,5 +1,6 @@
 package com.poc.itextpdf.inbound.controller;
 
+import com.poc.itextpdf.core.domains.dto.GerarComprovanteCommand;
 import com.poc.itextpdf.core.domains.dto.GerarPDFCommand;
 import com.poc.itextpdf.core.domains.exception.DomainException;
 import com.poc.itextpdf.core.usecase.itextpdf.SalvarPDF;
@@ -19,7 +20,7 @@ public class ItextPdfController {
     private SalvarPDF criarPdfLeve;
 
     @PostMapping(value = "/gerar-pdf")
-    public ResponseEntity<?> criar (@RequestBody GerarPDFCommand command) {
+    public ResponseEntity<?> criar (@RequestBody GerarComprovanteCommand command) {
         criarPdfLeve.execute(command);
         return ResponseEntity.ok("PDF Gerado com sucesso!");
     }

@@ -3,7 +3,10 @@ package com.poc.itextpdf.outbound.itextpdf.strategy.impl;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.element.*;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
 import com.poc.itextpdf.core.domains.dto.CompraCommand;
+import com.poc.itextpdf.core.domains.dto.GerarComprovanteCommand;
 import com.poc.itextpdf.core.domains.dto.GerarPDFCommand;
 import com.poc.itextpdf.core.domains.exception.pdf.SumarioCompraPdfException;
 import com.poc.itextpdf.core.utils.MoneyFormatter;
@@ -22,33 +25,59 @@ public class BodyPDF implements ImpressorPDFStrategy {
 
     @Override
     @SneakyThrows
-    public void imprimir(Document document, GerarPDFCommand data) {
-        // Construindo PDF com dados
-
+    public void imprimir(Document document, GerarComprovanteCommand data) {
         // Criando a entidade "Table" fornecida pela lib passando como parâmetro o tamanho das colunas que definimos acima
-        Table table = new Table(ColumnFactory.generate(ColumnsTypePDF.SUMARIO_COMPRA));
-
-        CompraCommand compra = Optional.of(data.getCompras().get(0)).orElseThrow(SumarioCompraPdfException::new);
-
-        Text separador = new Text(" - ");
-
-        Paragraph sumario = new Paragraph()
-                .add(new Text("Auditoria Veloe").setBold())
-                .add(separador)
-                .add(new Text("Embarcador ").setBold())
-                .add(new Text(compra.getEmbarcador()))
-                .add(separador)
-                .add(new Text("ID ").setBold())
-                .add(new Text(compra.getId().toString()))
-                .add(separador)
-                .add(new Text("Valor carregado (R$) ").setBold())
-                .add(new Text(MoneyFormatter.formatter(compra.getValores().getCarregado())));
+        Table table = new Table(ColumnFactory.generate(ColumnsTypePDF.BODY));
 
         table.addCell(new Cell()
+                .setTextAlignment(TextAlignment.LEFT)
+                .setVerticalAlignment(VerticalAlignment.TOP)
                 .setBorder(Border.NO_BORDER)
-                .setMarginTop(-40f)
-                .add(sumario)
+                .add(new Cell()
+                        .setBold()
+                        .setFontSize(20f)
+                        .setMarginTop(-16f)
+                        .add("Informações tranferencia")
+                )
+                .add(new Cell()
+                        .setBold()
+                        .setFontSize(16f)
+                        .add("Valor")
+                )
+                .add(new Cell()
+                        .setFontSize(24f)
+                        .setMarginTop(-18f)
+                        .add(String.format("R$ %s", MoneyFormatter.formatter(data.getValor())))
+                )
+                .add(new Cell()
+                        .setBold()
+                        .setFontSize(20f)
+                        .add("Informações origem")
+                )
+                .add(new Cell()
+                        .setBold()
+                        .setFontSize(16f)
+                        .add("Nome")
+                )
+                .add(new Cell()
+                        .setFontSize(24f)
+                        .setMarginTop(-18f)
+                        .add(data.getPagador().getNome())
+                )
+                .add(new Cell()
+                        .setBold()
+                        .setFontSize(16f)
+                        .add("Instituição")
+                )
+                .add(new Cell()
+                        .setFontSize(24f)
+                        .setMarginTop(-18f)
+                        .add(data.getPagador().getConta().getBanco())
+                )
         );
+
+        table.addCell(new Cell());
+        table.addCell(new Cell());
 
         // Adicionando a tabela ao nosso "Document" para enfim nosso PDF ser "montado"
         document.add(table);

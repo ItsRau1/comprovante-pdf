@@ -1,6 +1,7 @@
 package com.poc.itextpdf.outbound.itextpdf.strategy;
 
 import com.itextpdf.layout.Document;
+import com.poc.itextpdf.core.domains.dto.GerarComprovanteCommand;
 import com.poc.itextpdf.core.domains.dto.GerarPDFCommand;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
@@ -21,16 +22,15 @@ public class ImpressorPDFNavigation {
 
     private final ApplicationContext applicationContext;
 
-    private List<ImpressorPDFStrategy> impressors = new ArrayList<>();
+    private final List<ImpressorPDFStrategy> impressors = new ArrayList<>();
 
     @PostConstruct
     void init() {
         impressors.addAll(applicationContext.getBeansOfType(ImpressorPDFStrategy.class).values());
-
+        impressors.sort(ImpressorPDFStrategy::compareTo);
     }
 
-    public void execute(Document document, GerarPDFCommand data) {
-        // Percorrendo a lista com todos os impressores e imprimindo cada parte do PDF
+    public void execute(Document document, GerarComprovanteCommand data) {
         this.impressors.forEach(impressor -> impressor.imprimir(document, data));
     }
 

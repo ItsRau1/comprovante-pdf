@@ -1,6 +1,7 @@
 package com.poc.itextpdf.outbound.itextpdf.gateway;
 
 import com.itextpdf.layout.Document;
+import com.poc.itextpdf.core.domains.dto.GerarComprovanteCommand;
 import com.poc.itextpdf.core.domains.dto.GerarPDFCommand;
 import com.poc.itextpdf.core.domains.entity.RelatorioPDF;
 import com.poc.itextpdf.core.domains.gateway.RelatorioGateway;
@@ -22,7 +23,7 @@ public class RelatorioGatewayItextPDF implements RelatorioGateway {
     ImpressorPDFNavigation impressorPDFNavigation;
 
     @Override
-    public RelatorioPDF gerar(GerarPDFCommand command) {
+    public RelatorioPDF gerar(GerarComprovanteCommand command) {
         // Gerando RelatorioPDF utilizando os dados recebidos como parâmetro
         RelatorioPDF relatorioPDF = new RelatorioPDF(command);
 

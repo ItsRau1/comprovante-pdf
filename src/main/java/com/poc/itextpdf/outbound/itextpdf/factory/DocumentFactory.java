@@ -21,8 +21,8 @@ public class DocumentFactory {
         Document document = new Document(pdfDocument, PageSize.A4.rotate());
 
         // 4. Adicionando especificações gerais do documento, como fonte, margem, etc...
-        document.setMargins(36f, 36f, 36f, 36f);
-        document.setFontSize(8f);
+        document.setMargins(24f, 24f, 24f, 24f);
+        document.setFontSize(12f);
         document.setCharacterSpacing(0.1f);
         document.setFont(FontFactory.generate("fonts/Montserrat.ttf"));
         document.setFontColor(WebColors.getRGBColor(ColorsPDF.FONT_COLOR.getColor()));
