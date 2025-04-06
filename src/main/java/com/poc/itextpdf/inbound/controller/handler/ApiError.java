@@ -9,8 +9,8 @@ import java.util.List;
 @AllArgsConstructor
 public class ApiError {
 
-    private String code;
+	private String code;
 
-    private List<String> errors;
+	private List<String> errors;
 
 }

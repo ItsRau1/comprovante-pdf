@@ -7,19 +7,17 @@ import com.poc.itextpdf.outbound.itextpdf.property.DividerTypePDF;
 
 public class DividerFactory {
 
-    public static Cell generate(DividerTypePDF type) {
-        return switch (type) {
-            case DIVIDER:
-                yield  generateDivider(false);
-            case DIVIDER_WITH_LINE:
-                yield generateDivider(true);
-        };
-    }
+	public static Cell generate(DividerTypePDF type) {
+		return switch (type) {
+			case DIVIDER:
+				yield generateDivider(false);
+			case DIVIDER_WITH_LINE:
+				yield generateDivider(true);
+		};
+	}
 
-    private static Cell generateDivider(Boolean line) {
-        return new Cell()
-                .setBorder(Border.NO_BORDER)
-                .setBorderRight(line ? new SolidBorder(1f) : null);
-    }
+	private static Cell generateDivider(Boolean line) {
+		return new Cell().setBorder(Border.NO_BORDER).setBorderRight(line ? new SolidBorder(1f) : null);
+	}
 
 }

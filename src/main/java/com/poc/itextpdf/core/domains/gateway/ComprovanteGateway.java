@@ -5,6 +5,6 @@ import com.poc.itextpdf.core.domains.entity.ComprovantePDF;
 
 public interface ComprovanteGateway {
 
-    ComprovantePDF gerar (GerarComprovanteCommand command);
+	ComprovantePDF gerar(GerarComprovanteCommand command);
 
 }

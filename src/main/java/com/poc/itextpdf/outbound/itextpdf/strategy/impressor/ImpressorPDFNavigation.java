@@ -11,10 +11,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ImpressorPDFNavigation {
 
-    private final List<ImpressorPDFStrategy> impressors;
+	private final List<ImpressorPDFStrategy> impressors;
 
-    public void execute(Document document, GerarComprovanteCommand data) {
-        this.impressors.forEach(impressor -> impressor.imprimir(document, data));
-    }
+	public void execute(Document document, GerarComprovanteCommand data) {
+		this.impressors.forEach(impressor -> impressor.imprimir(document, data));
+	}
 
 }

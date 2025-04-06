@@ -12,11 +12,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class GerarComprovante {
 
-    @Autowired
-    ComprovanteGateway comprovanteGateway;
+	@Autowired
+	ComprovanteGateway comprovanteGateway;
 
-    public void execute (GerarComprovanteCommand command) {
-        comprovanteGateway.gerar(command);
-    }
+	public void execute(GerarComprovanteCommand command) {
+		comprovanteGateway.gerar(command);
+	}
 
 }

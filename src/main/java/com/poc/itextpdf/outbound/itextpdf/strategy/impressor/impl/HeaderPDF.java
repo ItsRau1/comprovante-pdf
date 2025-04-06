@@ -24,61 +24,47 @@ import java.util.Objects;
 @Order(1)
 public class HeaderPDF implements ImpressorPDFStrategy {
 
-    @Override
-    public void imprimir(Document document, GerarComprovanteCommand command) {
-        Table table = new Table(ColumnFactory.generate(ColumnsTypePDF.HALF));
+	@Override
+	public void imprimir(Document document, GerarComprovanteCommand command) {
+		Table table = new Table(ColumnFactory.generate(ColumnsTypePDF.HALF));
 
-        table.addCell(generateBancoInfo());
-        table.addCell(generateComprovanteInfo(command.getData()));
+		table.addCell(generateBancoInfo());
+		table.addCell(generateComprovanteInfo(command.getData()));
 
-        document.add(table);
-    }
+		document.add(table);
+	}
 
-    private Cell generateBancoInfo() {
-        String pathLogo = "images/logo.png";
-        Image imgLogo = ImageFactory.generate(Objects.requireNonNull(this.getClass().getClassLoader().getResource(pathLogo)))
-                .setWidth(275f)
-                .setHorizontalAlignment(HorizontalAlignment.LEFT);
+	private Cell generateBancoInfo() {
+		String pathLogo = "images/logo.png";
+		Image imgLogo = ImageFactory
+			.generate(Objects.requireNonNull(this.getClass().getClassLoader().getResource(pathLogo)))
+			.setWidth(275f)
+			.setHorizontalAlignment(HorizontalAlignment.LEFT);
 
-        return new Cell()
-                .setBorder(Border.NO_BORDER)
-                .setTextAlignment(TextAlignment.LEFT)
-                .setMarginBottom(40f)
-                .add(imgLogo)
-                .add(new Cell()
-                        .setMarginTop(10f)
-                        .add("RDBank Financeira SA.")
-                )
-                .add(new Cell()
-                        .setMarginTop(-12f)
-                        .add("CNPJ: 77.777.777/0001-77")
-                )
-                .add(new Cell()
-                        .setMarginTop(-12f)
-                        .add("contato@rdbank.com")
-                )
-                .add(new Cell()
-                        .setMarginTop(-12f)
-                        .add("0800 707 0707")
-                );
-    }
+		return new Cell().setBorder(Border.NO_BORDER)
+			.setTextAlignment(TextAlignment.LEFT)
+			.setMarginBottom(40f)
+			.add(imgLogo)
+			.add(new Cell().setMarginTop(10f).add("RDBank Financeira SA."))
+			.add(new Cell().setMarginTop(-12f).add("CNPJ: 77.777.777/0001-77"))
+			.add(new Cell().setMarginTop(-12f).add("contato@rdbank.com"))
+			.add(new Cell().setMarginTop(-12f).add("0800 707 0707"));
+	}
 
-    private Cell generateComprovanteInfo(LocalDateTime date) {
-        return new Cell()
-                .setBorder(Border.NO_BORDER)
-                .setTextAlignment(TextAlignment.LEFT)
-                .setMarginLeft(-10f)
-                .add(new Cell()
-                        .setBorder(Border.NO_BORDER)
-                        .setFont(FontFactory.generate("fonts/MontserratBold.ttf"))
-                        .setFontSize(24f)
-                        .setMarginTop(17f)
-                        .add("Comprovante de Transferência"))
-                .add(new Cell()
-                        .setBorder(Border.NO_BORDER)
-                        .setMarginLeft(5f)
-                        .setMarginTop(-10f)
-                        .add(String.format("Gerado em %s às %s", DateFormatter.formatDate(date), DateFormatter.formatHour(date))));
-    }
+	private Cell generateComprovanteInfo(LocalDateTime date) {
+		return new Cell().setBorder(Border.NO_BORDER)
+			.setTextAlignment(TextAlignment.LEFT)
+			.setMarginLeft(-10f)
+			.add(new Cell().setBorder(Border.NO_BORDER)
+				.setFont(FontFactory.generate("fonts/MontserratBold.ttf"))
+				.setFontSize(24f)
+				.setMarginTop(17f)
+				.add("Comprovante de Transferência"))
+			.add(new Cell().setBorder(Border.NO_BORDER)
+				.setMarginLeft(5f)
+				.setMarginTop(-10f)
+				.add(String.format("Gerado em %s às %s", DateFormatter.formatDate(date),
+						DateFormatter.formatHour(date))));
+	}
 
 }

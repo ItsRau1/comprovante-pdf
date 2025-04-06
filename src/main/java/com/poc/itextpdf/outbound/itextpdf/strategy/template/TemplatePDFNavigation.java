@@ -11,10 +11,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TemplatePDFNavigation {
 
-    private final List<TemplatePDFStrategy> templates;
+	private final List<TemplatePDFStrategy> templates;
 
-    public void execute(DocumentDTO documentDTO, ComprovantePDF comprovante) {
-        templates.forEach(template -> template.apply(documentDTO, comprovante));
-    }
+	public void execute(DocumentDTO documentDTO, ComprovantePDF comprovante) {
+		templates.forEach(template -> template.apply(documentDTO, comprovante));
+	}
 
 }

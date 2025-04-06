@@ -5,8 +5,8 @@ import com.poc.itextpdf.core.domains.exception.Error;
 
 public class ValorPdfException extends DomainException {
 
-    public ValorPdfException() {
-        super(Error.BAD_REQUEST, "Erro ao imprimir seção Valor PDF");
-    }
+	public ValorPdfException() {
+		super(Error.BAD_REQUEST, "Erro ao imprimir seção Valor PDF");
+	}
 
 }

@@ -5,9 +5,8 @@ import com.poc.itextpdf.core.domains.exception.Error;
 
 public class HeaderPdfException extends DomainException {
 
-    public HeaderPdfException() {
-        super(Error.BAD_REQUEST,
-                "Erro ao imprimir seção Header PDF");
-    }
+	public HeaderPdfException() {
+		super(Error.BAD_REQUEST, "Erro ao imprimir seção Header PDF");
+	}
 
 }

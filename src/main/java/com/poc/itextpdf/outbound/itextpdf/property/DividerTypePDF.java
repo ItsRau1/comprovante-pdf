@@ -5,12 +5,12 @@ import lombok.Getter;
 @Getter
 public enum DividerTypePDF {
 
-    DIVIDER("divider"), DIVIDER_WITH_LINE("dividerWithLine");
+	DIVIDER("divider"), DIVIDER_WITH_LINE("dividerWithLine");
 
-    final String value;
+	final String value;
 
-    DividerTypePDF(String value) {
-        this.value = value;
-    }
+	DividerTypePDF(String value) {
+		this.value = value;
+	}
 
 }

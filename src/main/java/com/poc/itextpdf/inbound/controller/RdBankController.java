@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class RdBankController {
 
-    @Autowired
-    private GerarComprovante gerarComprovante;
+	@Autowired
+	private GerarComprovante gerarComprovante;
 
-    @PostMapping(value = "/gerar-comprovante")
-    public ResponseEntity<?> gerar (@Valid @RequestBody GerarComprovanteCommand command) {
-        gerarComprovante.execute(command);
-        return ResponseEntity.ok("Comprovante gerado com sucesso! Verifique a pasta 'resources/pdf'");
-    }
+	@PostMapping(value = "/gerar-comprovante")
+	public ResponseEntity<?> gerar(@Valid @RequestBody GerarComprovanteCommand command) {
+		gerarComprovante.execute(command);
+		return ResponseEntity.ok("Comprovante gerado com sucesso! Verifique a pasta 'resources/pdf'");
+	}
 
 }

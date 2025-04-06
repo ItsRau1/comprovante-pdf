@@ -11,12 +11,12 @@ import java.util.Objects;
 
 public class FontFactory {
 
-    @SneakyThrows
-    public static PdfFont generate(String pathFont) {
-        InputStream inputStream = Objects
-                .requireNonNull(FontFactory.class.getClassLoader().getResourceAsStream(pathFont));
-        byte[] fontByte = IOUtils.toByteArray(inputStream);
-        return PdfFontFactory.createFont(fontByte, PdfEncodings.IDENTITY_H, true);
-    }
+	@SneakyThrows
+	public static PdfFont generate(String pathFont) {
+		InputStream inputStream = Objects
+			.requireNonNull(FontFactory.class.getClassLoader().getResourceAsStream(pathFont));
+		byte[] fontByte = IOUtils.toByteArray(inputStream);
+		return PdfFontFactory.createFont(fontByte, PdfEncodings.IDENTITY_H, true);
+	}
 
 }

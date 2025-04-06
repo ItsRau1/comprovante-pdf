@@ -19,43 +19,45 @@ import java.io.OutputStream;
 @RequiredArgsConstructor
 public class ComprovanteGatewayItextPDF implements ComprovanteGateway {
 
-    @Autowired
-    ImpressorPDFNavigation impressorPDFNavigation;
+	@Autowired
+	ImpressorPDFNavigation impressorPDFNavigation;
 
-    @Autowired
-    TemplatePDFNavigation templatePDFNavigation;
+	@Autowired
+	TemplatePDFNavigation templatePDFNavigation;
 
-    @Override
-    public ComprovantePDF gerar(GerarComprovanteCommand command) {
-        // Gerando RelatorioPDF utilizando os dados recebidos como parâmetro
-        ComprovantePDF comprovantePDF = new ComprovantePDF(command);
+	@Override
+	public ComprovantePDF gerar(GerarComprovanteCommand command) {
+		// Gerando RelatorioPDF utilizando os dados recebidos como parâmetro
+		ComprovantePDF comprovantePDF = new ComprovantePDF(command);
 
-        // Gerando o Document (Para mais detalhes, vide a Factory)
-        DocumentDTO documentDTO = DocumentFactory.generate(comprovantePDF);
+		// Gerando o Document (Para mais detalhes, vide a Factory)
+		DocumentDTO documentDTO = DocumentFactory.generate(comprovantePDF);
 
-        // Imprimindo dados no PDF
-        impressorPDFNavigation.execute(documentDTO.getDocument(), command);
+		// Imprimindo dados no PDF
+		impressorPDFNavigation.execute(documentDTO.getDocument(), command);
 
-        templatePDFNavigation.execute(documentDTO, comprovantePDF);
+		templatePDFNavigation.execute(documentDTO, comprovantePDF);
 
-        // 'Fechando' o 'Document' finalizando a sua 'montagem'
-        documentDTO.getDocument().close();
+		// 'Fechando' o 'Document' finalizando a sua 'montagem'
+		documentDTO.getDocument().close();
 
-        // "Escrevendo" nosso arquivo para efeitos de teste TODO: Este passo deve ser removido
-        save(comprovantePDF);
+		// "Escrevendo" nosso arquivo para efeitos de teste TODO: Este passo deve ser
+		// removido
+		save(comprovantePDF);
 
-        // Retornando o RelatorioPDF que acabamos de gerar
-        return comprovantePDF;
-    }
+		// Retornando o RelatorioPDF que acabamos de gerar
+		return comprovantePDF;
+	}
 
-    public void save(ComprovantePDF comprovantePDF) {
+	public void save(ComprovantePDF comprovantePDF) {
 
-        try(OutputStream outputStream = new FileOutputStream(comprovantePDF.getNomeArquivo())) {
-            comprovantePDF.writeTo(outputStream);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+		try (OutputStream outputStream = new FileOutputStream(comprovantePDF.getNomeArquivo())) {
+			comprovantePDF.writeTo(outputStream);
+		}
+		catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 
-    }
+	}
 
 }

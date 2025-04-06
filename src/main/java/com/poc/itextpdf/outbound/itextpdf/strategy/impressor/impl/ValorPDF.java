@@ -28,53 +28,49 @@ import java.util.Optional;
 @Order(2)
 public class ValorPDF implements ImpressorPDFStrategy {
 
-    private final PdfFont fontBold = FontFactory.generate("fonts/MontserratBold.ttf");
+	private final PdfFont fontBold = FontFactory.generate("fonts/MontserratBold.ttf");
 
-    @Override
-    public void imprimir(Document document, GerarComprovanteCommand command) {
-        Table table = new Table(ColumnFactory.generate(ColumnsTypePDF.FULL_WIDTH));
+	@Override
+	public void imprimir(Document document, GerarComprovanteCommand command) {
+		Table table = new Table(ColumnFactory.generate(ColumnsTypePDF.FULL_WIDTH));
 
-        table.addCell(generateBackgroundLabelValor());
+		table.addCell(generateBackgroundLabelValor());
 
-        table.addCell(generateLabelValor());
+		table.addCell(generateLabelValor());
 
-        BigDecimal valor = Optional.ofNullable(command.getValor()).orElseThrow(ValorPdfException::new);
-        table.addCell(generateValor(valor));
+		BigDecimal valor = Optional.ofNullable(command.getValor()).orElseThrow(ValorPdfException::new);
+		table.addCell(generateValor(valor));
 
-        document.add(table);
-    }
+		document.add(table);
+	}
 
-    private Cell generateBackgroundLabelValor() {
-        String pathLogo = "images/backgroundValue.png";
-        Image imgLogo = ImageFactory.generate(Objects.requireNonNull(this.getClass().getClassLoader().getResource(pathLogo)))
-                .setWidth(106f)
-                .setHorizontalAlignment(HorizontalAlignment.CENTER);
+	private Cell generateBackgroundLabelValor() {
+		String pathLogo = "images/backgroundValue.png";
+		Image imgLogo = ImageFactory
+			.generate(Objects.requireNonNull(this.getClass().getClassLoader().getResource(pathLogo)))
+			.setWidth(106f)
+			.setHorizontalAlignment(HorizontalAlignment.CENTER);
 
-        return new Cell()
-                .setMarginTop(-50f)
-                .setBorder(Border.NO_BORDER)
-                .add(imgLogo);
-    }
+		return new Cell().setMarginTop(-50f).setBorder(Border.NO_BORDER).add(imgLogo);
+	}
 
-    private Cell generateLabelValor() {
-        return new Cell()
-                .setBorder(Border.NO_BORDER)
-                .setTextAlignment(TextAlignment.CENTER)
-                .setMarginTop(-58f)
-                .setFontSize(24f)
-                .setFontColor(Color.WHITE)
-                .setFont(fontBold)
-                .add("Valor");
-    }
+	private Cell generateLabelValor() {
+		return new Cell().setBorder(Border.NO_BORDER)
+			.setTextAlignment(TextAlignment.CENTER)
+			.setMarginTop(-58f)
+			.setFontSize(24f)
+			.setFontColor(Color.WHITE)
+			.setFont(fontBold)
+			.add("Valor");
+	}
 
-    private Cell generateValor(BigDecimal value) {
-        return new Cell()
-                .setBorder(Border.NO_BORDER)
-                .setTextAlignment(TextAlignment.CENTER)
-                .setMarginTop(-30f)
-                .setFontSize(36f)
-                .setFont(fontBold)
-                .add(MoneyFormatter.formatter(value));
-    }
+	private Cell generateValor(BigDecimal value) {
+		return new Cell().setBorder(Border.NO_BORDER)
+			.setTextAlignment(TextAlignment.CENTER)
+			.setMarginTop(-30f)
+			.setFontSize(36f)
+			.setFont(fontBold)
+			.add(MoneyFormatter.formatter(value));
+	}
 
 }

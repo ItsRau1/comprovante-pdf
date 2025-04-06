@@ -14,29 +14,29 @@ import java.util.UUID;
 @Log4j2
 public class ComprovantePDF extends ByteArrayOutputStream {
 
-    private final String PATH = "src/main/resources/pdf";
+	private final String PATH = "src/main/resources/pdf";
 
-    private final String nomeArquivo;
+	private final String nomeArquivo;
 
-    private String identificador;
+	private String identificador;
 
-    public ComprovantePDF(GerarComprovanteCommand command) {
-        this.nomeArquivo = String.format("%s/%s.pdf", this.PATH, generateNomeArquivo(command));
-        this.generateIdentificador();
-    }
+	public ComprovantePDF(GerarComprovanteCommand command) {
+		this.nomeArquivo = String.format("%s/%s.pdf", this.PATH, generateNomeArquivo(command));
+		this.generateIdentificador();
+	}
 
-    private String generateNomeArquivo (GerarComprovanteCommand command) {
-        var nomePagador = Optional.of(command.getPagador().getNome().trim().replace(" ", "-").toUpperCase())
-                .orElseThrow(() -> new FormatacaoEntidadeException(this.getClass().getName()));
-        var data = Optional.ofNullable(command.getData())
-                .orElseThrow(() -> new FormatacaoEntidadeException(this.getClass().getName()));
-        var formatedDate = DateFormatter.formatTimeStamp(data);
+	private String generateNomeArquivo(GerarComprovanteCommand command) {
+		var nomePagador = Optional.of(command.getPagador().getNome().trim().replace(" ", "-").toUpperCase())
+			.orElseThrow(() -> new FormatacaoEntidadeException(this.getClass().getName()));
+		var data = Optional.ofNullable(command.getData())
+			.orElseThrow(() -> new FormatacaoEntidadeException(this.getClass().getName()));
+		var formatedDate = DateFormatter.formatTimeStamp(data);
 
-        return String.format("RDBANK-%s-%s", nomePagador, formatedDate);
-    }
+		return String.format("RDBANK-%s-%s", nomePagador, formatedDate);
+	}
 
-    public void generateIdentificador() {
-        this.identificador = UUID.randomUUID().toString();
-    }
+	public void generateIdentificador() {
+		this.identificador = UUID.randomUUID().toString();
+	}
 
 }

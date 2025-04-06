@@ -5,6 +5,6 @@ import com.poc.itextpdf.outbound.itextpdf.dto.DocumentDTO;
 
 public interface TemplatePDFStrategy {
 
-    void apply (DocumentDTO documentDTO, ComprovantePDF comprovante);
+	void apply(DocumentDTO documentDTO, ComprovantePDF comprovante);
 
 }

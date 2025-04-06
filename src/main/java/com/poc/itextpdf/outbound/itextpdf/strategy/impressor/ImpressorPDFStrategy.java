@@ -5,6 +5,6 @@ import com.poc.itextpdf.core.domains.dto.GerarComprovanteCommand;
 
 public interface ImpressorPDFStrategy {
 
-    void imprimir(Document document, GerarComprovanteCommand data);
+	void imprimir(Document document, GerarComprovanteCommand data);
 
 }

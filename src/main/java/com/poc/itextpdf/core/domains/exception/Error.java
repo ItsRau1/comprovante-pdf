@@ -6,16 +6,16 @@ import org.springframework.http.HttpStatus;
 @Getter
 public enum Error {
 
-    INTERNAL_SERVER_ERROR("RDBANK01", HttpStatus.INTERNAL_SERVER_ERROR),
-    BAD_REQUEST("RDBANK02", HttpStatus.BAD_REQUEST);
+	INTERNAL_SERVER_ERROR("RDBANK01", HttpStatus.INTERNAL_SERVER_ERROR),
+	BAD_REQUEST("RDBANK02", HttpStatus.BAD_REQUEST);
 
-    private final String code;
+	private final String code;
 
-    private final HttpStatus status;
+	private final HttpStatus status;
 
-    Error(String code, HttpStatus status) {
-        this.code = code;
-        this.status = status;
-    }
+	Error(String code, HttpStatus status) {
+		this.code = code;
+		this.status = status;
+	}
 
 }

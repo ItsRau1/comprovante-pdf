@@ -9,8 +9,8 @@ import lombok.Data;
 @Builder
 public class DocumentDTO {
 
-    private Document document;
+	private Document document;
 
-    private PdfDocument pdfDocument;
+	private PdfDocument pdfDocument;
 
 }

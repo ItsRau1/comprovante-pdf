@@ -23,39 +23,38 @@ import java.util.Optional;
 @Order(3)
 public class ParticipantesInfoPDF implements ImpressorPDFStrategy {
 
-    @Override
-    public void imprimir(Document document, GerarComprovanteCommand data) {
-        Table table = new Table(ColumnFactory.generate(ColumnsTypePDF.HALF_DIVIDER));
+	@Override
+	public void imprimir(Document document, GerarComprovanteCommand data) {
+		Table table = new Table(ColumnFactory.generate(ColumnsTypePDF.HALF_DIVIDER));
 
-        PagadorCommand pagador = Optional.ofNullable(data.getPagador()).orElseThrow(ParticipantesInfoPdfException::new);
-        table.addCell(generatePagadorInfo(pagador));
+		PagadorCommand pagador = Optional.ofNullable(data.getPagador()).orElseThrow(ParticipantesInfoPdfException::new);
+		table.addCell(generatePagadorInfo(pagador));
 
-        table.addCell(DividerFactory.generate(DividerTypePDF.DIVIDER_WITH_LINE));
+		table.addCell(DividerFactory.generate(DividerTypePDF.DIVIDER_WITH_LINE));
 
-        DestinatarioCommand destinatario = Optional.ofNullable(data.getDestinatario()).orElseThrow(ParticipantesInfoPdfException::new);
-        table.addCell(generateDestinatarioInfo(destinatario));
+		DestinatarioCommand destinatario = Optional.ofNullable(data.getDestinatario())
+			.orElseThrow(ParticipantesInfoPdfException::new);
+		table.addCell(generateDestinatarioInfo(destinatario));
 
-        document.add(table);
-    }
+		document.add(table);
+	}
 
-    private Cell generatePagadorInfo (PagadorCommand pagador) {
-        return ParticipanteInfoFactory.generate(
-                ParticipanteInfoDTO.builder()
-                        .title("Informações origem")
-                        .nome(pagador.getNome())
-                        .conta(pagador.getConta())
-                        .build()
-        );
-    }
+	private Cell generatePagadorInfo(PagadorCommand pagador) {
+		return ParticipanteInfoFactory.generate(ParticipanteInfoDTO.builder()
+			.title("Informações origem")
+			.nome(pagador.getNome())
+			.conta(pagador.getConta())
+			.build());
+	}
 
-    private Cell generateDestinatarioInfo (DestinatarioCommand destinatario) {
-        return ParticipanteInfoFactory.generate(
-                ParticipanteInfoDTO.builder()
-                        .title("Informações destino")
-                        .nome(destinatario.getNome())
-                        .conta(destinatario.getConta())
-                        .build()
-        ).setMarginLeft(24f);
-    }
+	private Cell generateDestinatarioInfo(DestinatarioCommand destinatario) {
+		return ParticipanteInfoFactory
+			.generate(ParticipanteInfoDTO.builder()
+				.title("Informações destino")
+				.nome(destinatario.getNome())
+				.conta(destinatario.getConta())
+				.build())
+			.setMarginLeft(24f);
+	}
 
 }

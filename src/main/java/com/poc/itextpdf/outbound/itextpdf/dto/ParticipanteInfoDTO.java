@@ -8,12 +8,12 @@ import lombok.Data;
 @Builder
 public class ParticipanteInfoDTO {
 
-    private String title;
+	private String title;
 
-    private String nome;
+	private String nome;
 
-    private ContaCommand conta;
+	private ContaCommand conta;
 
-    private String instituicao;
+	private String instituicao;
 
 }

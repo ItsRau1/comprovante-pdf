@@ -10,11 +10,11 @@ import lombok.Data;
 @Builder
 public class PagadorCommand {
 
-    @NotBlank(message = "Nome do pagador é obrigatório")
-    private String nome;
+	@NotBlank(message = "Nome do pagador é obrigatório")
+	private String nome;
 
-    @NotNull(message = "Conta do pagador é obrigatória")
-    @Valid
-    private ContaCommand conta;
+	@NotNull(message = "Conta do pagador é obrigatória")
+	@Valid
+	private ContaCommand conta;
 
 }
