@@ -6,8 +6,8 @@ import org.springframework.http.HttpStatus;
 @Getter
 public enum Error {
 
-    INTERNAL_SERVER_ERROR("VPORA01", HttpStatus.INTERNAL_SERVER_ERROR),
-    BAD_REQUEST("VPORA02", HttpStatus.BAD_REQUEST);
+    INTERNAL_SERVER_ERROR("RDBANK01", HttpStatus.INTERNAL_SERVER_ERROR),
+    BAD_REQUEST("RDBANK02", HttpStatus.BAD_REQUEST);
 
     private final String code;
 

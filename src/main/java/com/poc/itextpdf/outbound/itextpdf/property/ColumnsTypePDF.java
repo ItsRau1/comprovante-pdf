@@ -5,9 +5,9 @@ import lombok.Getter;
 @Getter
 public enum ColumnsTypePDF {
 
-    HEADER("header"), BODY("body"), FOOTER("footer");
+    FULL_WIDTH("fullWidth"), HALF("half"), HALF_DIVIDER("halfDivider");
 
-    public final String value;
+    final String value;
 
     ColumnsTypePDF(String column) {
         this.value = column;
