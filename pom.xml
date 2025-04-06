@@ -10,9 +10,9 @@
 	</parent>
 	<groupId>com.poc</groupId>
 	<artifactId>itextpdf</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>itextpdf</name>
-	<description>Poc for validate itextpdf lib</description>
+	<version>1.0.0</version>
+	<name>comprovante-pdf</name>
+	<description>POC para validar geração de comprovante PDF</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -37,7 +37,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -85,17 +84,6 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.mapstruct</groupId>
-			<artifactId>mapstruct</artifactId>
-			<version>${org.mapstruct.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.mapstruct</groupId>
-			<artifactId>mapstruct-processor</artifactId>
-			<version>${org.mapstruct.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
 			<groupId>jakarta.validation</groupId>
 			<artifactId>jakarta.validation-api</artifactId>
 			<version>3.1.1</version>
@@ -126,31 +114,26 @@
 			<artifactId>opencsv</artifactId>
 			<version>5.7.1</version>
 		</dependency>
-
 		<dependency>
 			<groupId>com.itextpdf</groupId>
 			<artifactId>forms</artifactId>
 			<version>${itextpdf.kernel.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>com.itextpdf</groupId>
 			<artifactId>pdfa</artifactId>
 			<version>${itextpdf.kernel.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>com.itextpdf</groupId>
 			<artifactId>sign</artifactId>
 			<version>${itextpdf.kernel.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>com.itextpdf</groupId>
 			<artifactId>barcodes</artifactId>
 			<version>${itextpdf.kernel.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>com.itextpdf</groupId>
 			<artifactId>font-asian</artifactId>
