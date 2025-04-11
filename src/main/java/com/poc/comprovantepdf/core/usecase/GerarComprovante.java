@@ -16,9 +16,9 @@ public class GerarComprovante {
 	ComprovanteGateway comprovanteGateway;
 
 	public void execute(GerarComprovanteCommand command) {
-        log.info("Gerando comprovante [COMMAND: {}]", command);
+		log.info("Gerando comprovante [COMMAND: {}]", command);
 		comprovanteGateway.gerar(command);
-        log.info("Comprovante gerado");
+		log.info("Comprovante gerado");
 	}
 
 }

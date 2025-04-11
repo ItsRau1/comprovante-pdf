@@ -29,18 +29,18 @@ public class ComprovanteGatewayItextPDF implements ComprovanteGateway {
 
 	@Override
 	public void gerar(GerarComprovanteCommand command) {
-        log.info("Iniciando geração do comprovante PDF. [COMMAND: {}]", command);
+		log.info("Iniciando geração do comprovante PDF. [COMMAND: {}]", command);
 		ComprovantePDF comprovantePDF = new ComprovantePDF(command);
-        log.info("Comprovante PDF gerado. [COMPROVANTE: {}]", comprovantePDF);
-        log.info("Iniciando arquivo PDF do comprovante");
+		log.info("Comprovante PDF gerado. [COMPROVANTE: {}]", comprovantePDF);
+		log.info("Iniciando arquivo PDF do comprovante");
 		DocumentDTO documentDTO = DocumentFactory.generate(comprovantePDF);
 		impressorPDFNavigation.execute(documentDTO.getDocument(), command);
 		templatePDFNavigation.execute(documentDTO, comprovantePDF);
-        log.info("Finalizando arquivo PDF do comprovante");
+		log.info("Finalizando arquivo PDF do comprovante");
 		documentDTO.getDocument().close();
-        log.info("Salvando arquivo PDF do comprovante: [Nome: {}]", comprovantePDF.getNomeArquivo());
+		log.info("Salvando arquivo PDF do comprovante: [Nome: {}]", comprovantePDF.getNomeArquivo());
 		save(comprovantePDF);
-    }
+	}
 
 	public void save(ComprovantePDF comprovantePDF) {
 		try (OutputStream outputStream = new FileOutputStream(comprovantePDF.getNomeArquivo())) {

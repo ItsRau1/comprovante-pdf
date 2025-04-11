@@ -16,9 +16,9 @@ public class ImpressorPDFNavigation {
 	private final List<ImpressorPDFStrategy> impressors;
 
 	public void execute(Document document, GerarComprovanteCommand data) {
-        log.info("Inciando impressão de informações no documento PDF");
+		log.info("Inciando impressão de informações no documento PDF");
 		this.impressors.forEach(impressor -> impressor.imprimir(document, data));
-        log.info("Finalizando impressão de informações no documento PDF");
+		log.info("Finalizando impressão de informações no documento PDF");
 	}
 
 }

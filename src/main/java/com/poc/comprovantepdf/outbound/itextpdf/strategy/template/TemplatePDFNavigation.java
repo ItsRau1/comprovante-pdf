@@ -16,9 +16,9 @@ public class TemplatePDFNavigation {
 	private final List<TemplatePDFStrategy> templates;
 
 	public void execute(DocumentDTO documentDTO, ComprovantePDF comprovante) {
-        log.info("Inciando aplicação de templates no documento PDF");
-        templates.forEach(template -> template.apply(documentDTO, comprovante));
-        log.info("Finalizando aplicação de templates no documento PDF");
+		log.info("Inciando aplicação de templates no documento PDF");
+		templates.forEach(template -> template.apply(documentDTO, comprovante));
+		log.info("Finalizando aplicação de templates no documento PDF");
 	}
 
 }
